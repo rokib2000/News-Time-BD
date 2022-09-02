@@ -4,4 +4,24 @@
 /* utilities  */
 body {
   font-family: "Roboto", sans-serif;
+  background-color: #f6f6f6;
+}
+
+.color-Blueberry {
+  color: #5d5fef;
+}
+
+.color-Gray52 {
+  color: #858585;
+}
+
+.bg-color-Blueberry {
+  background-color: #5d5fef;
+}
+
+/* NavBar  */
+
+.navbar-item:active,
+.navbar-item:hover {
+  color: #5d5fef;
 }
