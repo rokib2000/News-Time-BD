@@ -68,12 +68,12 @@ const displayNews = (newsAll) => {
     newsContainer.innerHTML += `
     <div class="card mb-3">
         <div class="row g-0">
-            <div class="col-md-2">
-            <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="..." />
+            <div class="col-md-2 ">
+            <img src="${news.thumbnail_url}" class="img-fluid rounded-start " alt="..." style=" width: 100%; "/>
             </div>
             <div class="col-md-10">
             <div class="card-body">
-                <h5 class="card-title fw-semibold">${news.title}</h5>
+                <h5 class="card-title fw-semibold">${news.title ? news.title : "No Data found"}</h5>
                 <p class="card-text">${newsDetails(newsDetail)}</p>
                 <div class="align-items-end">
                 <div class="row mt-4 align-items-center">
@@ -83,12 +83,14 @@ const displayNews = (newsAll) => {
                           news.author.img
                         }" class="img-fluid rounded-circle" alt="..." /></div>
                         <div class="col-10">
-                        <h5>${news.author.name}</h5>
+                        <h5>${news.author.name ? news.author.name : "No Data found"}</h5>
                         </div>
                     </div>
                     </div>
                     <div class="col-4 text-center">
-                    <h5><i class="fa-regular fa-eye fa-xl"></i> ${news.total_view}</h5>
+                    <p><i class="fa-regular fa-eye fa-xl"></i> ${
+                      news.total_view ? news.total_view : "No Data found"
+                    }</p>
                     </div>
                     <div class="col-4 text-end">
                     <!-- Button trigger modal -->
@@ -137,12 +139,12 @@ const singleNewsView = (singleNews) => {
   singleNewsDetail.innerHTML = `
   <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title" id="newsModalLabel">${singleNews.title}</h5>
+    <h5 class="modal-title" id="newsModalLabel">${singleNews.title ? singleNews.title : "No Data found"}</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
   <div class="modal-body">
-    <div class="my-3"><img src="${singleNews.image_url}" class="img-fluid" alt="..." /></div>
-    <p class="card-text">${singleNews.details}</p>
+    <div class="my-3 "><img src="${singleNews.image_url}" class="img-fluid" alt="..." style=" width: 100%; "/></div>
+    <p class="card-text">${singleNews.details ? singleNews.details : "No Data found"}</p>
   </div>
   <div class="modal-footer">
     <div class="align-items-end">
@@ -153,12 +155,14 @@ const singleNewsView = (singleNews) => {
               <img src="${singleNews.author.img}" class="img-fluid rounded-circle" alt="..." />
             </div>
             <div class="col-10">
-              <h5>${singleNews.author.name}</h5>
+              <h5>${singleNews.author.name ? singleNews.author.name : "No Data found"}</h5>
             </div>
           </div>
         </div>
         <div class="col-4 text-center">
-          <h5><i class="fa-regular fa-eye fa-xl"></i> ${singleNews.total_view}</h5>
+          <p><i class="fa-regular fa-eye fa-xl"></i> ${
+            singleNews.total_view ? singleNews.total_view : "No Data found"
+          }</p>
         </div>
       </div>
     </div>
