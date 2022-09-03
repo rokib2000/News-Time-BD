@@ -44,6 +44,13 @@ const loadCategoryNews = async (id) => {
 // view all news
 
 const displayNews = (newsAll) => {
+  // console.log(newsAll);
+
+  // data sort
+  newsAll.sort((data1, data2) => {
+    return data2.total_view - data1.total_view;
+  });
+
   const newsContainer = document.getElementById("news-container");
   newsContainer.textContent = "";
 
@@ -135,7 +142,7 @@ const newsView = async (news_id) => {
 
 // single news data view in modal
 const singleNewsView = (singleNews) => {
-  console.log(singleNews);
+  // console.log(singleNews);
   const singleNewsDetail = document.getElementById("single-news-details");
   singleNewsDetail.innerHTML = `
   <div class="modal-content">
