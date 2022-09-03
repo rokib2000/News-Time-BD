@@ -37,6 +37,19 @@ const displayNews = (newsAll) => {
   const newsContainer = document.getElementById("news-container");
   newsContainer.textContent = "";
 
+  // check news
+  const totalNews = document.getElementById("news-alert");
+  const items = newsAll.length;
+  if (items === 0) {
+    totalNews.innerText = "No news found. please check another category!";
+    totalNews.classList.add("alert-danger");
+    totalNews.classList.remove("alert-light");
+  } else {
+    totalNews.innerText = `${items} items found from the category `;
+    totalNews.classList.remove("alert-danger");
+    totalNews.classList.add("alert-light");
+  }
+
   newsAll.map((news) => {
     newsContainer.innerHTML += `
     <div class="card mb-3">
