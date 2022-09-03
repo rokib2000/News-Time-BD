@@ -51,6 +51,9 @@ const displayNews = (newsAll) => {
   }
 
   newsAll.map((news) => {
+    // news details slice
+    const newsDetail = news.details;
+
     newsContainer.innerHTML += `
     <div class="card mb-3">
         <div class="row g-0">
@@ -60,12 +63,14 @@ const displayNews = (newsAll) => {
             <div class="col-md-10">
             <div class="card-body">
                 <h5 class="card-title fw-semibold">${news.title}</h5>
-                <p class="card-text">${news.details}</p>
+                <p class="card-text">${newsDetails(newsDetail)}</p>
                 <div class="align-items-end">
                 <div class="row mt-4 align-items-center">
                     <div class="col-4">
                     <div class="row align-items-center">
-                        <div class="col-2"><img src="${news.author.img}" class="img-fluid rounded-circle" alt="..." /></div>
+                        <div class="col-2"><img src="${
+                          news.author.img
+                        }" class="img-fluid rounded-circle" alt="..." /></div>
                         <div class="col-10">
                         <h5>${news.author.name}</h5>
                         </div>
@@ -88,6 +93,15 @@ const displayNews = (newsAll) => {
     </div>
     `;
   });
+};
+
+const newsDetails = (details) => {
+  if (details.length > 600) {
+    const newDetails = details.slice(0, 600) + "...";
+    return newDetails;
+  } else {
+    return details;
+  }
 };
 
 loadCategoryNews("01");
