@@ -111,7 +111,45 @@ const newsView = async (news_id) => {
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data.data[0]);
+  singleNewsView(data.data[0]);
+};
+
+// single news data view in modal
+const singleNewsView = (singleNews) => {
+  console.log(singleNews);
+  const singleNewsDetail = document.getElementById("single-news-details");
+  singleNewsDetail.innerHTML = `
+  <div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="newsModalLabel">${singleNews.title}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <div class="my-3"><img src="${singleNews.image_url}" class="img-fluid" alt="..." /></div>
+    <p class="card-text">${singleNews.details}</p>
+  </div>
+  <div class="modal-footer">
+    <div class="align-items-end">
+      <div class="row  align-items-center">
+        <div class="col-4">
+          <div class="row align-items-center">
+            <div class="col-2">
+              <img src="${singleNews.author.img}" class="img-fluid rounded-circle" alt="..." />
+            </div>
+            <div class="col-10">
+              <h5>${singleNews.author.name}</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <h5><i class="fa-regular fa-eye fa-xl"></i> ${singleNews.total_view}</h5>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  </div>
+</div>
+    `;
 };
 
 loadCategoryNews("01");
