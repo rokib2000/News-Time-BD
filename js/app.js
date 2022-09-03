@@ -83,12 +83,13 @@ const displayNews = (newsAll) => {
                           news.author.img
                         }" class="img-fluid rounded-circle" alt="..." /></div>
                         <div class="col-10">
-                        <h5>${news.author.name ? news.author.name : "No Data found"}</h5>
+                        <h6>${news.author.name ? news.author.name : "No Data found"}</h6>
+                         <p class="card-text"><small class="text-muted">${news.author.published_date}</small></p>
                         </div>
                     </div>
                     </div>
                     <div class="col-4 text-center">
-                    <p><i class="fa-regular fa-eye fa-xl"></i> ${
+                    <p><i class="fa-regular fa-eye fa-lg"></i> ${
                       news.total_view ? news.total_view : "No Data found"
                     }</p>
                     </div>
@@ -146,7 +147,7 @@ const singleNewsView = (singleNews) => {
     <div class="my-3 "><img src="${singleNews.image_url}" class="img-fluid" alt="..." style=" width: 100%; "/></div>
     <p class="card-text">${singleNews.details ? singleNews.details : "No Data found"}</p>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer ">
     <div class="align-items-end">
       <div class="row  align-items-center">
         <div class="col-4">
@@ -155,12 +156,13 @@ const singleNewsView = (singleNews) => {
               <img src="${singleNews.author.img}" class="img-fluid rounded-circle" alt="..." />
             </div>
             <div class="col-10">
-              <h5>${singleNews.author.name ? singleNews.author.name : "No Data found"}</h5>
+              <h6>${singleNews.author.name ? singleNews.author.name : "No Data found"}</h6>
+              <p class="card-text"><small class="text-muted">${singleNews.author.published_date}</small></p>
             </div>
           </div>
         </div>
-        <div class="col-4 text-center">
-          <p><i class="fa-regular fa-eye fa-xl"></i> ${
+        <div class="col-4 text-center  align-items-center">
+          <p><i class="fa-regular fa-eye fa-lg"></i> ${
             singleNews.total_view ? singleNews.total_view : "No Data found"
           }</p>
         </div>
