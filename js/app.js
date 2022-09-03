@@ -25,6 +25,8 @@ const displayCategories = (categories) => {
 // Load category news
 
 const loadCategoryNews = async (id) => {
+  loadingData(true);
+
   const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -94,6 +96,8 @@ const displayNews = (newsAll) => {
     </div>
     `;
   });
+
+  loadingData(false);
 };
 
 // news details Slice Function
@@ -150,6 +154,17 @@ const singleNewsView = (singleNews) => {
   </div>
 </div>
     `;
+};
+
+// loading data
+
+const loadingData = (isLoading) => {
+  const toggleSpinner = document.getElementById("taggle-spinner");
+  if (isLoading) {
+    toggleSpinner.classList.remove("d-none");
+  } else {
+    toggleSpinner.classList.add("d-none");
+  }
 };
 
 loadCategoryNews("01");
