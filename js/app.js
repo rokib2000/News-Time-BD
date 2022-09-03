@@ -51,6 +51,7 @@ const displayNews = (newsAll) => {
   }
 
   newsAll.map((news) => {
+    // console.log(news);
     // news details slice
     const newsDetail = news.details;
 
@@ -81,7 +82,7 @@ const displayNews = (newsAll) => {
                     </div>
                     <div class="col-4 text-end">
                     <!-- Button trigger modal -->
-                    <p data-bs-toggle="modal" data-bs-target="#newsModal">
+                    <p onclick="newsView('${news._id}')" data-bs-toggle="modal" data-bs-target="#newsModal">
                         <i class="fa-solid fa-arrow-right-long fa-2xl color-Blueberry"></i>
                     </p>
                     </div>
@@ -95,6 +96,7 @@ const displayNews = (newsAll) => {
   });
 };
 
+// news details Slice Function
 const newsDetails = (details) => {
   if (details.length > 600) {
     const newDetails = details.slice(0, 600) + "...";
@@ -102,6 +104,14 @@ const newsDetails = (details) => {
   } else {
     return details;
   }
+};
+
+// load news full data
+const newsView = async (news_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data.data[0]);
 };
 
 loadCategoryNews("01");
